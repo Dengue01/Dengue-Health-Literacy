@@ -1,38 +1,57 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<title>แบบสอบถามความรอบรู้ด้านสุขภาพ</title>
-<style>
-body { font-family: Tahoma, sans-serif; margin: 20px; }
-.section { margin-bottom: 25px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; }
-h2 { color: #2c7be5; }
-.question { margin: 10px 0; }
-.score { margin-left: 10px; }
-button { padding: 10px 20px; font-size: 16px; }
-.result { margin-top: 20px; font-size: 18px; font-weight: bold; }
-</style>
+    <meta charset="UTF-8">
+    <title>แบบสอบถามความรอบรู้ด้านสุขภาพ (Health Literacy)</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            margin: 20px;
+            background-color: #f7f7f7;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            background: #ffffff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eaf2f8;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+    </style>
 </head>
-
 <body>
 
-<h1>แบบสอบถามความรอบรู้ด้านสุขภาพ (โรคไข้เลือดออก)</h1>
-<p>กรุณาเลือกคะแนนที่ตรงกับความคิดเห็นของท่าน (1 = น้อยที่สุด,2 = น้อย, 3 = ปานกลาง, 4 = มาก 5 = มากที่สุด)</p>
+<h1>แบบสอบถามความรอบรู้ด้านสุขภาพ (Health Literacy)</h1>
+<p>โปรดเลือกคะแนนที่ตรงกับความคิดเห็นของท่านมากที่สุด (1 = น้อยที่สุด, 5 = มากที่สุด)</p>
 
-<form id="quizForm">
+<form id="questionnaire">
 
-<!-- ===== ด้านที่ 1 ===== -->
+<!-- ด้านที่ 1 -->
 <div class="section">
 <h2>ด้านที่ 1 การเข้าถึงข้อมูลสุขภาพ (Access)</h2>
-
 <div class="question">1. ท่านสามารถค้นหาข้อมูลเกี่ยวกับโรคไข้เลือดออกได้ด้วยตนเอง<br>
-<span class="score">
 <input type="radio" name="q1" value="1">1
 <input type="radio" name="q1" value="2">2
 <input type="radio" name="q1" value="3">3
 <input type="radio" name="q1" value="4">4
 <input type="radio" name="q1" value="5">5
-</span></div>
+</div>
 
 <div class="question">2. ท่านทราบแหล่งข้อมูลที่เชื่อถือได้เกี่ยวกับโรคไข้เลือดออก<br>
 <input type="radio" name="q2" value="1">1
@@ -67,51 +86,281 @@ button { padding: 10px 20px; font-size: 16px; }
 </div>
 </div>
 
-<script>
-for (let i = 6; i <= 30; i++) {
-  document.write(`
-  <div class="section">
-    <div class="question">${i}. ข้อคำถามที่ ${i}<br>
-    <input type="radio" name="q${i}" value="1">1
-    <input type="radio" name="q${i}" value="2">2
-    <input type="radio" name="q${i}" value="3">3
-    <input type="radio" name="q${i}" value="4">4
-    <input type="radio" name="q${i}" value="5">5
-    </div>
-  </div>
-  `);
-}
-</script>
+<!-- ด้านที่ 2 -->
+<div class="section">
+<h2>ด้านที่ 2 ความเข้าใจข้อมูลสุขภาพ (Understand)</h2>
+<div class="question">6. ท่านเข้าใจสาเหตุการเกิดโรคไข้เลือดออก<br>
+<input type="radio" name="q6" value="1">1
+<input type="radio" name="q6" value="2">2
+<input type="radio" name="q6" value="3">3
+<input type="radio" name="q6" value="4">4
+<input type="radio" name="q6" value="5">5
+</div>
+
+<div class="question">7. ท่านเข้าใจวิธีการติดต่อของโรคไข้เลือดออก<br>
+<input type="radio" name="q7" value="1">1
+<input type="radio" name="q7" value="2">2
+<input type="radio" name="q7" value="3">3
+<input type="radio" name="q7" value="4">4
+<input type="radio" name="q7" value="5">5
+</div>
+
+<div class="question">8. ท่านเข้าใจอาการสำคัญของโรคไข้เลือดออก<br>
+<input type="radio" name="q8" value="1">1
+<input type="radio" name="q8" value="2">2
+<input type="radio" name="q8" value="3">3
+<input type="radio" name="q8" value="4">4
+<input type="radio" name="q8" value="5">5
+</div>
+
+<div class="question">9. ท่านเข้าใจอาการอันตรายที่ต้องรีบไปพบแพทย์<br>
+<input type="radio" name="q9" value="1">1
+<input type="radio" name="q9" value="2">2
+<input type="radio" name="q9" value="3">3
+<input type="radio" name="q9" value="4">4
+<input type="radio" name="q9" value="5">5
+</div>
+
+<div class="question">10. ท่านเข้าใจวิธีการป้องกันโรคไข้เลือดออกที่ถูกต้อง<br>
+<input type="radio" name="q10" value="1">1
+<input type="radio" name="q10" value="2">2
+<input type="radio" name="q10" value="3">3
+<input type="radio" name="q10" value="4">4
+<input type="radio" name="q10" value="5">5
+</div>
+
+</div>
+
+<!-- ด้านที่ 3 -->
+<div class="section">
+<h2>ด้านที่ 3 การประเมินข้อมูลสุขภาพ (Appraise)</h2>
+
+<div class="question">11. ท่านสามารถแยกแยะข้อมูลจริงและข่าวลือเกี่ยวกับโรคไข้เลือดออกได้<br>
+<input type="radio" name="q11" value="1">1
+<input type="radio" name="q11" value="2">2
+<input type="radio" name="q11" value="3">3
+<input type="radio" name="q11" value="4">4
+<input type="radio" name="q11" value="5">5
+</div>
+
+<div class="question">12. ท่านพิจารณาความน่าเชื่อถือของแหล่งข้อมูลก่อนเชื่อหรือปฏิบัติตาม<br>
+<input type="radio" name="q12" value="1">1
+<input type="radio" name="q12" value="2">2
+<input type="radio" name="q12" value="3">3
+<input type="radio" name="q12" value="4">4
+<input type="radio" name="q12" value="5">5
+</div>
+
+<div class="question">13. ท่านไม่หลงเชื่อวิธีรักษาไข้เลือดออกที่ไม่มีหลักฐานทางการแพทย์<br>
+<input type="radio" name="q13" value="1">1
+<input type="radio" name="q13" value="2">2
+<input type="radio" name="q13" value="3">3
+<input type="radio" name="q13" value="4">4
+<input type="radio" name="q13" value="5">5
+</div>
+
+<div class="question">14. ท่านเปรียบเทียบข้อมูลจากหลายแหล่งก่อนตัดสินใจ<br>
+<input type="radio" name="q14" value="1">1
+<input type="radio" name="q14" value="2">2
+<input type="radio" name="q14" value="3">3
+<input type="radio" name="q14" value="4">4
+<input type="radio" name="q14" value="5">5
+</div>
+
+<div class="question">15. ท่านสามารถตัดสินใจได้ว่าข้อมูลใดควรนำไปใช้<br>
+<input type="radio" name="q15" value="1">1
+<input type="radio" name="q15" value="2">2
+<input type="radio" name="q15" value="3">3
+<input type="radio" name="q15" value="4">4
+<input type="radio" name="q15" value="5">5
+</div>
+
+</div>
+
+<!-- ด้านที่ 4 -->
+<div class="section">
+<h2>ด้านที่ 4 การตัดสินใจและการนำไปใช้ (Apply)</h2>
+
+<div class="question">16. ท่านกำจัดแหล่งเพาะพันธุ์ยุงลายรอบบ้านเป็นประจำ<br>
+<input type="radio" name="q16" value="1">1
+<input type="radio" name="q16" value="2">2
+<input type="radio" name="q16" value="3">3
+<input type="radio" name="q16" value="4">4
+<input type="radio" name="q16" value="5">5
+</div>
+
+<div class="question">17. ท่านใช้วิธีป้องกันยุงลาย เช่น มุ้ง ยากันยุง หรือมุ้งลวด<br>
+<input type="radio" name="q17" value="1">1
+<input type="radio" name="q17" value="2">2
+<input type="radio" name="q17" value="3">3
+<input type="radio" name="q17" value="4">4
+<input type="radio" name="q17" value="5">5
+</div>
+
+<div class="question">18. ท่านปรับพฤติกรรมในครัวเรือนเพื่อลดความเสี่ยงต่อไข้เลือดออก<br>
+<input type="radio" name="q18" value="1">1
+<input type="radio" name="q18" value="2">2
+<input type="radio" name="q18" value="3">3
+<input type="radio" name="q18" value="4">4
+<input type="radio" name="q18" value="5">5
+</div>
+
+<div class="question">19. เมื่อสงสัยว่าเป็นไข้เลือดออก ท่านไปพบแพทย์ทันที<br>
+<input type="radio" name="q19" value="1">1
+<input type="radio" name="q19" value="2">2
+<input type="radio" name="q19" value="3">3
+<input type="radio" name="q19" value="4">4
+<input type="radio" name="q19" value="5">5
+</div>
+
+<div class="question">20. ท่านหลีกเลี่ยงการซื้อยารับประทานเองเมื่อมีไข้สูง<br>
+<input type="radio" name="q20" value="1">1
+<input type="radio" name="q20" value="2">2
+<input type="radio" name="q20" value="3">3
+<input type="radio" name="q20" value="4">4
+<input type="radio" name="q20" value="5">5
+</div>
+
+</div>
+
+<!-- ด้านที่ 5 -->
+<div class="section">
+<h2>ด้านที่ 5 การสื่อสารด้านสุขภาพ (Communicate)</h2>
+
+<div class="question">21. ท่านสามารถอธิบายสาเหตุและการป้องกันไข้เลือดออกให้ผู้อื่นเข้าใจได้<br>
+<input type="radio" name="q21" value="1">1
+<input type="radio" name="q21" value="2">2
+<input type="radio" name="q21" value="3">3
+<input type="radio" name="q21" value="4">4
+<input type="radio" name="q21" value="5">5
+</div>
+
+<div class="question">22. ท่านแนะนำคนในครอบครัวให้ช่วยกันป้องกันโรคไข้เลือดออก<br>
+<input type="radio" name="q22" value="1">1
+<input type="radio" name="q22" value="2">2
+<input type="radio" name="q22" value="3">3
+<input type="radio" name="q22" value="4">4
+<input type="radio" name="q22" value="5">5
+</div>
+
+<div class="question">23. ท่านกล้าสอบถามเจ้าหน้าที่สาธารณสุขเมื่อมีข้อสงสัย<br>
+<input type="radio" name="q23" value="1">1
+<input type="radio" name="q23" value="2">2
+<input type="radio" name="q23" value="3">3
+<input type="radio" name="q23" value="4">4
+<input type="radio" name="q23" value="5">5
+</div>
+
+<div class="question">24. ท่านแลกเปลี่ยนข้อมูลการป้องกันไข้เลือดออกกับเพื่อนบ้านหรือชุมชน<br>
+<input type="radio" name="q24" value="1">1
+<input type="radio" name="q24" value="2">2
+<input type="radio" name="q24" value="3">3
+<input type="radio" name="q24" value="4">4
+<input type="radio" name="q24" value="5">5
+</div>
+
+<div class="question">25. ท่านแจ้งเตือนผู้อื่นเมื่อพบแหล่งเพาะพันธุ์ยุงลาย<br>
+<input type="radio" name="q25" value="1">1
+<input type="radio" name="q25" value="2">2
+<input type="radio" name="q25" value="3">3
+<input type="radio" name="q25" value="4">4
+<input type="radio" name="q25" value="5">5
+</div>
+
+</div>
+
+
+<!-- ด้านที่ 6 -->
+<div class="section">
+<h2>ด้านที่ 6 การจัดการตนเองและการมีส่วนร่วม (Self-management & Participation)</h2>
+
+<div class="question">
+26. ท่านดูแลตนเองและครอบครัวให้ปฏิบัติตามมาตรการป้องกันอย่างสม่ำเสมอ<br>
+<input type="radio" name="q26" value="1">1
+<input type="radio" name="q26" value="2">2
+<input type="radio" name="q26" value="3">3
+<input type="radio" name="q26" value="4">4
+<input type="radio" name="q26" value="5">5
+</div>
+
+<div class="question">
+27. ท่านมีส่วนร่วมในการกำจัดลูกน้ำยุงลายในบ้านหรือชุมชน<br>
+<input type="radio" name="q27" value="1">1
+<input type="radio" name="q27" value="2">2
+<input type="radio" name="q27" value="3">3
+<input type="radio" name="q27" value="4">4
+<input type="radio" name="q27" value="5">5
+</div>
+
+<div class="question">
+28. ท่านปฏิบัติตามคำแนะนำของเจ้าหน้าที่สาธารณสุขอย่างต่อเนื่อง<br>
+<input type="radio" name="q28" value="1">1
+<input type="radio" name="q28" value="2">2
+<input type="radio" name="q28" value="3">3
+<input type="radio" name="q28" value="4">4
+<input type="radio" name="q28" value="5">5
+</div>
+
+<div class="question">
+29. ท่านเข้าร่วมกิจกรรมรณรงค์ป้องกันโรคไข้เลือดออกในชุมชน<br>
+<input type="radio" name="q29" value="1">1
+<input type="radio" name="q29" value="2">2
+<input type="radio" name="q29" value="3">3
+<input type="radio" name="q29" value="4">4
+<input type="radio" name="q29" value="5">5
+</div>
+
+<div class="question">
+30. ท่านเห็นความสำคัญของการป้องกันโรคไข้เลือดออกในระยะยาว<br>
+<input type="radio" name="q30" value="1">1
+<input type="radio" name="q30" value="2">2
+<input type="radio" name="q30" value="3">3
+<input type="radio" name="q30" value="4">4
+<input type="radio" name="q30" value="5">5
+</div>
+
+</div>
+
 
 <button type="button" onclick="calculateScore()">ส่งแบบสอบถาม</button>
-
 </form>
 
-<div class="result" id="result"></div>
+<div id="result"></div>
 
 <script>
 function calculateScore() {
-  let total = 0;
-  for (let i = 1; i <= 30; i++) {
-    let q = document.querySelector('input[name="q'+i+'"]:checked');
-    if (!q) {
-      alert("กรุณาตอบข้อที่ " + i);
-      return;
+    let total = 0;
+
+    for (let i = 1; i <= 30; i++) {
+        let answer = document.querySelector(`input[name="q${i}"]:checked`);
+        if (!answer) {
+            alert("กรุณาตอบแบบสอบถามให้ครบทุกข้อ");
+            return;
+        }
+        total += parseInt(answer.value);
     }
-    total += parseInt(q.value);
-  }
 
-  let level = "";
-  if (total >= 121) level = "มากที่สุด";
-  else if (total >= 91) level = "มาก";
-  else if (total >= 61) level = "ปานกลาง";
-  else if (total >= 31) level = "น้อย";
-  else level = "น้อยที่สุด";
+    let level = "";
+    if (total >= 121 && total <= 150) {
+        level = "มากที่สุด";
+    } else if (total >= 91) {
+        level = "มาก";
+    } else if (total >= 61) {
+        level = "ปานกลาง";
+    } else if (total >= 31) {
+        level = "น้อย";
+    } else {
+        level = "น้อยที่สุด";
+    }
 
-  document.getElementById("result").innerHTML =
-    "คะแนนรวม = " + total + " คะแนน<br>ระดับความรอบรู้ด้านสุขภาพ = " + level;
+    document.getElementById("result").innerHTML = `
+        <h3>ผลการประเมิน</h3>
+        <p>คะแนนรวมทั้งหมด: <strong>${total}</strong> คะแนน</p>
+        <p>ระดับความรอบรู้ด้านสุขภาพ: <strong>${level}</strong></p>
+    `;
 }
 </script>
 
 </body>
 </html>
+
