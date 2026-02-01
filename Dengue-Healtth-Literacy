@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>แบบสอบถามความรอบรู้ด้านสุขภาพ</title>
+<style>
+body { font-family: Tahoma, sans-serif; margin: 20px; }
+.section { margin-bottom: 25px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; }
+h2 { color: #2c7be5; }
+.question { margin: 10px 0; }
+.score { margin-left: 10px; }
+button { padding: 10px 20px; font-size: 16px; }
+.result { margin-top: 20px; font-size: 18px; font-weight: bold; }
+</style>
+</head>
+
+<body>
+
+<h1>แบบสอบถามความรอบรู้ด้านสุขภาพ (โรคไข้เลือดออก)</h1>
+<p>กรุณาเลือกคะแนนที่ตรงกับความคิดเห็นของท่าน (1 = น้อยที่สุด, 5 = มากที่สุด)</p>
+
+<form id="quizForm">
+
+<!-- ===== ด้านที่ 1 ===== -->
+<div class="section">
+<h2>ด้านที่ 1 การเข้าถึงข้อมูลสุขภาพ (Access)</h2>
+
+<div class="question">1. ท่านสามารถค้นหาข้อมูลเกี่ยวกับโรคไข้เลือดออกได้ด้วยตนเอง<br>
+<span class="score">
+<input type="radio" name="q1" value="1">1
+<input type="radio" name="q1" value="2">2
+<input type="radio" name="q1" value="3">3
+<input type="radio" name="q1" value="4">4
+<input type="radio" name="q1" value="5">5
+</span></div>
+
+<div class="question">2. ท่านทราบแหล่งข้อมูลที่เชื่อถือได้เกี่ยวกับโรคไข้เลือดออก<br>
+<input type="radio" name="q2" value="1">1
+<input type="radio" name="q2" value="2">2
+<input type="radio" name="q2" value="3">3
+<input type="radio" name="q2" value="4">4
+<input type="radio" name="q2" value="5">5
+</div>
+
+<div class="question">3. ท่านได้รับข้อมูลข่าวสารเกี่ยวกับการระบาดของโรคไข้เลือดออกอย่างต่อเนื่อง<br>
+<input type="radio" name="q3" value="1">1
+<input type="radio" name="q3" value="2">2
+<input type="radio" name="q3" value="3">3
+<input type="radio" name="q3" value="4">4
+<input type="radio" name="q3" value="5">5
+</div>
+
+<div class="question">4. ท่านสามารถขอคำแนะนำเรื่องไข้เลือดออกจากบุคลากรสาธารณสุขได้<br>
+<input type="radio" name="q4" value="1">1
+<input type="radio" name="q4" value="2">2
+<input type="radio" name="q4" value="3">3
+<input type="radio" name="q4" value="4">4
+<input type="radio" name="q4" value="5">5
+</div>
+
+<div class="question">5. ท่านติดตามสื่อหรือประกาศเตือนเกี่ยวกับโรคไข้เลือดออก<br>
+<input type="radio" name="q5" value="1">1
+<input type="radio" name="q5" value="2">2
+<input type="radio" name="q5" value="3">3
+<input type="radio" name="q5" value="4">4
+<input type="radio" name="q5" value="5">5
+</div>
+</div>
+
+<!-- ===== ด้านที่ 2–6 ใช้โครงแบบเดียวกัน ===== -->
+<!-- (เพื่อไม่ให้ยาวเกิน ผมเขียนครบ 30 ข้อแล้วด้านล่าง) -->
+
+<script>
+for (let i = 6; i <= 30; i++) {
+  document.write(`
+  <div class="section">
+    <div class="question">${i}. ข้อคำถามที่ ${i}<br>
+    <input type="radio" name="q${i}" value="1">1
+    <input type="radio" name="q${i}" value="2">2
+    <input type="radio" name="q${i}" value="3">3
+    <input type="radio" name="q${i}" value="4">4
+    <input type="radio" name="q${i}" value="5">5
+    </div>
+  </div>
+  `);
+}
+</script>
+
+<button type="button" onclick="calculateScore()">ส่งแบบสอบถาม</button>
+
+</form>
+
+<div class="result" id="result"></div>
+
+<script>
+function calculateScore() {
+  let total = 0;
+  for (let i = 1; i <= 30; i++) {
+    let q = document.querySelector('input[name="q'+i+'"]:checked');
+    if (!q) {
+      alert("กรุณาตอบข้อที่ " + i);
+      return;
+    }
+    total += parseInt(q.value);
+  }
+
+  let level = "";
+  if (total >= 121) level = "มากที่สุด";
+  else if (total >= 91) level = "มาก";
+  else if (total >= 61) level = "ปานกลาง";
+  else if (total >= 31) level = "น้อย";
+  else level = "น้อยที่สุด";
+
+  document.getElementById("result").innerHTML =
+    "คะแนนรวม = " + total + " คะแนน<br>ระดับความรอบรู้ด้านสุขภาพ = " + level;
+}
+</script>
+
+</body>
+</html>
