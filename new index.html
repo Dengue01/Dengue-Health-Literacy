@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>แบบประเมินความเสี่ยงโรคไข้เลือดออก</title>
+
+<!-- Google Font : Sarabun -->
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --blue:#1976d2;
+  --blue-soft:#e3f2fd;
+  --green:#2e7d32;
+  --yellow:#f9a825;
+  --red:#c62828;
+}
+
+body{
+  font-family:"Sarabun","Tahoma",sans-serif;
+  margin:0;
+  background:#f4f8fb;
+}
+
+.container{
+  max-width:760px;
+  margin:auto;
+  padding:16px;
+}
+
+h1{
+  text-align:center;
+  color:var(--blue);
+  font-size:1.5rem;
+  font-weight:700;
+}
+
+.subtitle{
+  text-align:center;
+  font-size:0.95rem;
+  margin-bottom:18px;
+  color:#555;
+}
+
+.section{
+  background:#fff;
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:18px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+}
+
+.section h2{
+  color:var(--blue);
+  font-size:1.1rem;
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+.question{
+  font-size:0.95rem;
+  margin-bottom:14px;
+}
+
+.options{
+  display:flex;
+  gap:10px;
+  margin-top:6px;
+}
+
+.options label{
+  flex:1;
+  text-align:center;
+  padding:10px 0;
+  border-radius:10px;
+  background:var(--blue-soft);
+  cursor:pointer;
+  font-weight:500;
+}
+
+.options input{
+  display:none;
+}
+
+.options input:checked + span{
+  background:var(--blue);
+  color:#fff;
+  display:block;
+  border-radius:10px;
+  font-weight:600;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  background:var(--blue);
+  color:#fff;
+  font-size:1.05rem;
+  font-family:"Sarabun",sans-serif;
+  font-weight:600;
+  cursor:pointer;
+}
+
+#result{
+  margin-top:20px;
+  background:#fff;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.07);
+}
+
+.result-box{
+  background:var(--blue-soft);
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:10px;
+}
+
+.low{color:var(--green);font-weight:600;}
+.mid{color:var(--yellow);font-weight:600;}
+.high{color:var(--red);font-weight:700;}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>แบบประเมินความเสี่ยงโรคไข้เลือดออก</h1>
+<div class="subtitle">
+ตอบ “ใช่ / ไม่ใช่” ตามความเป็นจริงของท่าน
+</div>
+
+<form id="form">
+
+<script>
+const sections = [
+ {title:"ส่วนที่ 1 อาการสงสัยโรคไข้เลือดออก", start:1},
+ {title:"ส่วนที่ 2 ปัจจัยเสี่ยงด้านสิ่งแวดล้อม", start:6},
+ {title:"ส่วนที่ 3 ปัจจัยเสี่ยงด้านพฤติกรรม", start:11},
+ {title:"ส่วนที่ 4 ปัจจัยเสี่ยงส่วนบุคคล", start:16}
+];
+
+const questions = [
+"ในช่วง 7 วันที่ผ่านมา มีไข้สูงเฉียบพลัน (≥ 38°C)",
+"มีอาการปวดศีรษะหรือปวดหลังลูกตา",
+"มีอาการปวดเมื่อยกล้ามเนื้อหรือข้อ",
+"มีผื่นขึ้นตามร่างกาย",
+"มีเลือดออกผิดปกติ",
+
+"มีแหล่งน้ำขังรอบบ้าน",
+"มีภาชนะกักเก็บน้ำ",
+"อาศัยอยู่ในชุมชนหนาแน่น",
+"พื้นที่เคยมีการระบาด",
+"พบยุงจำนวนมาก",
+
+"ทำกิจกรรมกลางแจ้งช่วงเช้า–เย็น",
+"ไม่ใช้วิธีป้องกันยุง",
+"ไม่กำจัดแหล่งเพาะพันธุ์",
+"เปิดบ้านโดยไม่มีอุปกรณ์กันยุง",
+"ไม่ตรวจลูกน้ำเป็นประจำ",
+
+"เคยป่วยไข้เลือดออก",
+"มีผู้ป่วยในครอบครัว",
+"มีผู้ป่วยในชุมชน",
+"เดินทางไปพื้นที่ระบาด",
+"อยู่ในที่คนรวมกลุ่มจำนวนมาก"
+];
+
+let q=0;
+sections.forEach(sec=>{
+document.write(`<div class="section"><h2>${sec.title}</h2>`);
+for(let i=0;i<5;i++){
+document.write(`
+<div class="question">
+${sec.start+i}. ${questions[q++]}
+<div class="options">
+<label><input type="radio" name="q${q}" value="1"><span>ใช่</span></label>
+<label><input type="radio" name="q${q}" value="0"><span>ไม่ใช่</span></label>
+</div>
+</div>`);
+}
+document.write(`</div>`);
+});
+</script>
+
+<button type="button" onclick="calculate()">ประเมินผล</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+function riskLevel(score){
+  if(score <= 6) return ["เสี่ยงต่ำ","low"];
+  if(score <= 13) return ["เสี่ยงปานกลาง","mid"];
+  return ["เสี่ยงสูง","high"];
+}
+
+function calculate(){
+  let total=0, idx=1;
+  let html="<h3>📊 ผลการประเมินรายด้าน</h3>";
+
+  sections.forEach(sec=>{
+    let s=0;
+    for(let i=0;i<5;i++){
+      let a=document.querySelector(`input[name="q${idx}"]:checked`);
+      if(!a){ alert("กรุณาตอบแบบประเมินให้ครบทุกข้อ"); return; }
+      s+=parseInt(a.value);
+      idx++;
+    }
+    html+=`
+    <div class="result-box">
+      <strong>${sec.title}</strong><br>
+      คะแนน ${s}/5
+    </div>`;
+    total+=s;
+  });
+
+  const [txt,cls]=riskLevel(total);
+
+  html+=`
+  <hr>
+  <h3>🧮 คะแนนรวมทั้งหมด</h3>
+  <p><strong>${total}/20 คะแนน</strong></p>
+  <p class="${cls}">ระดับความเสี่ยง : ${txt}</p>
+
+  <small>
+  <b>เกณฑ์การแปลผล</b><br>
+  0–6 = เสี่ยงต่ำ (โอกาสเกิดโรคน้อย)<br>
+  7–13 = เสี่ยงปานกลาง (ควรเฝ้าระวัง)<br>
+  14–20 = เสี่ยงสูง (ควรพบเจ้าหน้าที่สาธารณสุข)
+  </small>
+  `;
+
+  document.getElementById("result").innerHTML=html;
+}
+</script>
+
+</body>
+</html>
